@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medibot</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="register.js" defer></script>
+    <script type="module" src="login.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form action="index.html" autocomplete="off" class="sign-in-form">
+              <div class="logo">
+                <img src="./img/logo.jpg" alt="easyclass" />
+                <h4>Medibot</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Welcome Back</h2>
+                <h6>Not registred yet?</h6>
+                <a href="#" class="toggle">Sign up</a>
+              </div>
+              
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input type="text" id="loginemail" class="input-field" autocomplete="off" required />
+                  <label>Email</label>
+              </div>
+              
+              <div class="input-wrap">
+                  <input type="password" id="loginpassword" class="input-field" autocomplete="off" required />
+                  <label>Password</label>
+              </div>
+              
+
+                <button type="submit" value="Sign In" class="sign-btn" id="loginbtn">Sign In</button>
+
+                <p class="for">
+                  <a href="#">Forgot Password?
+                </p>
+                
+                </a>
+                <p class="text">
+                  You can Login your account by just tapping your medical ID on the scanner.  
+                  <a href="#">Learn more.</a>
+                </p>
+              </div>
+            </form>
+
+            <form action="index.html" autocomplete="off" class="sign-up-form">
+              <div class="logo">
+                <img src="./img/logo.jpg" alt="easyclass" />
+                <h4>Medibot</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Get Started</h2>
+                <h6>Already have an account?</h6>
+                <a href="#" class="toggle">Sign in</a>
+              </div>
+
+              <div class="steps">
+           
+                <div class="step-indicator active">1</div>
+                <div class="step-indicator">2</div>
+                <div class="step-indicator">3</div>
+            </div>
+            <div id="step-1">
+              <div class="input-wrap">
+                <div class="form-group">
+                  <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="Enter your email address" 
+                    required 
+                    pattern="^[^@]+@[^@]+\.com$" 
+                    title="Please enter a valid email address with only one '@' and ending with '.com'."
+                  >
+                </div>
+                <button type="button" class="sign-btn" onclick="nextStep(1)">Next</button>
+                <p class="text">
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </div>
+            </div>
+            
+            <div id="step-2" style="display: none;">
+              <form class="form" id="2sform" style="height: 50%;" >
+                <div class="form-group">
+                  <input 
+                    type="text" 
+                    id="first-name" 
+                    placeholder="Enter your first name" 
+                    required  
+                  >
+                </div>
+            
+                <div class="form-group">
+                  <label for="last-name"></label>
+                  <input type="text" id="last-name" placeholder="Enter your last name" required>
+                </div>
+            
+                <div class="form-group">
+                  <label for="gender"></label>
+                  <select id="gender" required>
+                    <option value="">Select your Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+            
+                <div class="form-group">
+                  <label for="blood-type"></label>
+                  <select id="blood-type" required>
+                    <option value="">Select your Blood Type</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+            
+                <div class="form-group">
+                  <div class="text" style="margin-bottom: 0.5rem;">
+                    <p>What's your Birthday?</p>
+                  </div>
+                  <div class="date-group">
+                    <select id="dob-month" required>
+                      <option value="">Month</option>
+                      <option>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>September</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                    </select>
+                    <select id="dob-day" required>
+                      <option value="">Date</option>
+                    </select>
+                    <select id="dob-year" required>
+                      <option value="">Year</option>
+                    </select>
+                  </div>
+                </div>
+            
+                <button type="button" class="sign-btn" onclick="prevStep(2)">Back</button>
+                <button type="button" class="sign-btn" onclick="nextStep(2)">Next</button>
+              </form>
+              <p class="text">
+                By signing up, I agree to the
+                <a href="#">Terms of Services</a> and
+                <a href="#">Privacy Policy</a>
+              </p>
+            </div>
+
+            <div id="step-3" style="display: none;">
+              <form class="form" onsubmit="return validatePasswords(event)">
+                <div class="form-group">
+                  <label for="password"></label>
+                  <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Create your Password" 
+                    required 
+                    oninput="clearPasswordError()"
+                  >
+                </div>
+                <div class="form-group" style="margin-top:-5px;">
+                  <label for="confirm-password"></label>
+                  <input 
+                    type="password" 
+                    id="confirm-password" 
+                    placeholder="Confirm your Password" 
+                    required 
+                    oninput="clearPasswordError()"
+                  >
+                </div>
+                <button type="button" class="sign-btn" onclick="prevStep(3)">Back</button>
+                <button type="submit" class="sign-btn" id="regbtn">Sign up</button>
+                <p class="text">
+                  <input type="checkbox" id="terms" required>
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </form>
+            </div>
+            
+
+            
+                
+              </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img src="./img/gif1.gif" class="image img-1 show" alt="" />
+              <img src="./img/gif2.gif" class="image img-2" alt="" />
+              <img src="./img/bay.jpg" class="image img-3" alt="" />
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Monitor your health</h2>
+                  <h2>Track you vital signs</h2>
+                  <h2>Be healthy</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Javascript file -->
+
+    <script src="app.js"></script>
+  </body>
+</html>
